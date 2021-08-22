@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Blog</title>
+    <style>
+        *{
+            margin: 0px;
+            padding : 0px;
+        }
+        body{
+            width : 100%;
+            height : 100vh;
+            background-color : #D7FEF9;
+            display:flex;
+            justify-content : center;
+            align-items : center;
+        }
+        .data{
+            width : 70%;
+            height : 70%;
+            background-color : white;
+            padding 20px;
+            text-align : center;
+            border-radius : 40px;
+            font-size : 25px;
+            padding-top : 50px;
+            line-height : 50px;
+        }
+        .data .l1{
+            font-weight : bold;
+        }
+        a{
+            text-decoration : none;
+            padding : 10px 25px;
+            border : 1px solid black;
+            background-color : #ccc;
+            color : black;
+
+        }
+    </style>
+</head>
+<body>
+<div class="data">
+
+        <label class="l1">Bloger : </label>
+        <label class="l2">{{result.bloger}}</label><br>
+        <label class="l1">Blog Title : </label>
+        <label class="l2">{{result.title}}</label><br>
+        <label class="l1">Posted On : </label>
+        <label class="l2">{{result.postdate}}</label><br>
+        <label class="l1">Post : </label>
+        <label class="l2">{{result.post}}</label><br>
+
+    <br><br>
+    <a href="displayBlog">Go Back</a>
+</div>
+</body>
+</html>

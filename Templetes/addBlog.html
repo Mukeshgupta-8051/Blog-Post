@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Blog</title>
+    <style>
+        *{
+            padding : 0px;
+            margin : 0px;
+        }
+        body{
+            background-image:url("{% static 'images/blogadd.jpg' %}");
+            background-repeat : no-repeat;
+            background-size : cover;
+            background-position : center;
+            width : 100%;
+            height : 100vh;
+            display : flex;
+            justify-content : center;
+            align-items: center;
+        }
+        .home{
+            width : 30%;
+            height : 75vh;
+            border : 2px solid black;
+            border-radius : 15px;
+            padding: 40px;
+            box-sizing : border-box;
+            line-height : 60px;
+        }
+        h2{
+            text-align : center;
+        }
+        label{
+            float: left;
+            width : 30%;
+            font-weight : bold;
+        }
+        input[type = 'text']{
+            width : 60%;
+            height : 20px;
+            padding : 5px;
+        }
+        textarea{
+            width : 64%;
+            margin-top : 20px;
+            padding : 5px;
+            box-sizing : border-box;
+        }
+        .btn{
+            float : right;
+            width : 60px;
+            height : 30px;
+            margin-right : 20px;
+            background-color : rgb(50, 230, 100);
+            border : 1px solid black;
+            border-radius:3px;
+            font-weight : bold;
+        }
+    </style>
+</head>
+<body>
+<div class="home">
+    <h2>Add Blog</h2>
+    <form action="AddBlog" method="post">
+        {% csrf_token %}
+        <label>Blogger</label>
+        <input type="text" name="blogger" value="{{edit.blogger}}"><br>
+        <label>Blog Title</label>
+        <input type="text" name="title" value="{{edit.title}}"><br>
+        <label>Post</label>
+        <textarea rows="7" cols="10" name="posting" value="{{edit.post}}"></textarea><br>
+        <input type="submit" value="Send" class="btn">
+    </form>
+
+</div>
+</body>
+
+</html>

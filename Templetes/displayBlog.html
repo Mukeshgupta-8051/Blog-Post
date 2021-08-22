@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Blog</title>
+    <style>
+        *{
+            margin : 0px;
+            padding : 0px;
+            box-sizing : border-box;
+        }
+        body{
+            width : 100%;
+            height : 100vh;
+            background-color : #D7FEF9;
+        }
+        .header{
+            margin : 15px;
+            height : auto;
+            background-color : white;
+            padding : 15px;
+            border-radius : 10px;
+            text-align : center;
+
+        }
+        .header label{
+            font-weight : bold;
+            margin-right : 10px;
+        }
+        .header .viewBlog{
+            padding : 3px;
+            width : 20%;
+        }
+        .header input[type='submit']{
+            padding : 3px;
+            width : 80px;
+            background-color : #3550E2;
+            color : white;
+            border-radius : 5px;
+        }
+        .content{
+            margin: 15px;
+        }
+        .content .row{
+            background-color : white;
+            margin-top : 15px;
+            padding : 15px;
+            border-radius : 10px;
+            line-height : 30px;
+        }
+        .content .row .l1{
+            width : 10%;
+            float : left;
+            font-weight : bold;
+        }
+        a{
+            //margin : 5px;
+            text-decoration : none;
+            padding : 5px 10px;
+            border : 1px solid black;
+            border-radius : 5px;
+        }
+        .edit{
+            background-color : #29AB37;
+            color : black;
+            margin-left : 1140px;
+        }
+        .delete{
+            background-color : #DD4A59;
+            color : black;
+            margin-right : 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <form action="searchBlog" method="post">
+            {% csrf_token %}
+            <label>Select the Blog</label>
+            <select class="viewBlog" name="blogname">
+                <option>Select The Blog....</option>
+                {% for res in result %}
+                    <option value='{{res.title}}'>{{res.title}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Search">
+        </form>
+    </div>
+    <div class="content">
+        <form action="displayBlog" method="post">
+            {% csrf_token %}
+            {% for res in result %}
+            <div class="row">
+                <label class="l1">Bloger : </label>
+                <label class="l2">{{res.bloger}}</label><br>
+                <label class="l1">Blog Title : </label>
+                <label class="l2">{{res.title}}</label><br>
+                <label class="l1">Posted On : </label>
+                <label class="l2">{{res.postdate}}</label><br>
+                <label class="l1">Post : </label>
+                <label class="l2">{{res.post}}</label><br>
+                <a class="edit" href="edit/{{res.id}}">Edit</a>
+                <a class="delete" href="delete/{{res.id}}">Delete</a>
+            </div>
+            {% endfor %}
+        </form>
+    </div>
+</body>
+</html>
